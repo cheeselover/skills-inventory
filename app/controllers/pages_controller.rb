@@ -1,6 +1,9 @@
 require 'will_paginate/array'
 
 class PagesController < ApplicationController
+
+  http_basic_authenticate_with name: "TESTER", password: "correcthorsebatterystaple"
+
   # GET /pages
   # GET /pages.json
   def index

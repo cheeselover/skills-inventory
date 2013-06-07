@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<!-- breadcrumb navigation -->
+<div>
+	<% for page in @page.ancestors.reverse %>
+	  <%= link_to h(page.name), page %> &gt; 
+	<% end %>
+	<%= link_to @page.name, @page %> &gt; 
+</div><br />
+
+<p>
+  <b>Parent:</b>
+  <%= @page.parent_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @page.name %>
+</p>
+
+<% if @page.links == nil %>
+
+  <h1>Listing Users</h1>
+
+  <table class="stuff" style="border:solid 2px">
+    <tr style="text-align:center">
+      <th>Name</th>
+      <th>Title</th>
+      <th># of Skills</th>
+      <th>Room #</th>
+      <th>Email</th>
+      <th>Notes</th>
+    </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user %></td>
+      <td><%= user.title %></td>
+      <td><%= user.skills.count %></td>
+      <td><%= user.room %></td>
+      <td><%= mail_to user.email, user.email %></td>
+      <td><%= user.note %></td>
+    </tr>
+  <% end %>
+  </table>
+  <br />
+
+  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+
+<% else %>
+  <p>
+    <b>Links:</b>&nbsp;
+    <% Page.where(parent_id: @page.id).each do |link| %>
+    	<%= link_to link.name, link %> <b>&#124;</b> 
+    <% end %>
+  </p><br />
+<% end %>
+
+<%= link_to 'Back to Index', pages_path, class: "btn btn-primary" %>

@@ -1,0 +1,26 @@
+<h1>Listing Pages</h1>
+
+<table class="stuff" style="border:solid 2px">
+  <tr style="text-align:center">
+    <th>Name</th>
+    <th># of Sub-Pages</th>
+    <th>Options</th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <% if page.parent_id == nil %>
+    <tr>
+      <td><%= link_to page.name, page %></td>
+      <td><%= Page.where(parent_id: page.id).count %></td>
+      <td>
+        <%= link_to 'Edit', edit_page_path(page) %> | <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+<br />
+
+<%= will_paginate @pages, renderer: BootstrapPagination::Rails %>
+
+<%= link_to 'New Page', new_page_path, class: "btn btn-primary" %>

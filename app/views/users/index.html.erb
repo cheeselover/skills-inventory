@@ -1,0 +1,29 @@
+<h1 style="text-align:center">Listing users</h1>
+
+<table id="users">
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Skills</th>
+    <th>Room</th>
+    <th>Email</th>
+    <th>Notes</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.name, user %></td>
+    <td><%= user.title %></td>
+    <td><%= user.skills.count %></td>
+    <td><%= user.room %></td>
+    <td><%= mail_to user.email %></td>
+    <td><%= user.note %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+<hr />
+
+
+<%= link_to 'New User', new_user_path, class: "btn btn-large btn-primary" %>

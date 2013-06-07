@@ -1,0 +1,38 @@
+<%= form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, style: "font-weight: bold" %><br />
+    <%= f.text_field :name, class: "form-field" %><br /><br /><br />
+  </div>
+
+  <div class="field">
+    <%= f.label "Location", style: "font-weight: bold" %><br />
+    <% @our_page = Page.find(params[:parent_id]) %>
+    <% for page in @our_page.ancestors.reverse %>
+      <%= f.label page.name + " > ", style: "float: left; margin-right: 5px;" %>
+    <% end %>
+    <%= f.label @our_page.name, style: "float: left" %> &nbsp;&gt;&nbsp;<b>New Page</b>
+  </div><br />
+
+  <% User.all.each do |u| %>
+  	<%= f.label "Associated Users", style: "font-weight: bold" %><br />
+  	<label style="margin-left: 50px;" class="checkbox">
+  		<input type="checkbox"><%= u.name %></input>
+  	</label>
+  <% end %><br /><hr />
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

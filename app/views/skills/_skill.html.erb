@@ -1,0 +1,32 @@
+<li>
+  <span class="skill-name"><%= skill.name %></span>
+  <span class="skill-desc"><%= skill.description %></span><br />
+  <p>Proficiency:
+  	<% case skill.proficiency %>
+  	<% when 1 %>
+  		<div class="progress progress-striped active">
+  			<div class="bar" style="width: 20%;"></div>
+  		</div>
+  	<% when 2 %>
+  		<div class="progress progress-striped active">
+  			<div class="bar" style="width: 22%;"></div>
+  			<div class="bar bar-success" style="width: 23%;"></div>
+  		</div>
+  	<% when 3 %>
+  		<div class="progress progress-striped active">
+  			<div class="bar" style="width: 23%;"></div>
+  			<div class="bar bar-success" style="width: 23%;"></div>
+  			<div class="bar bar-warning" style="width: 24%;"></div>
+  		</div>
+  	<% when 4 %>
+  		<div class="progress progress-striped active">
+  			<div class="bar" style="width: 24%;"></div>
+  			<div class="bar bar-success" style="width: 24%;"></div>
+  			<div class="bar bar-warning" style="width: 24%;"></div>
+  			<div class="bar bar-danger" style="width: 23%;"></div>
+  		</div>
+  	<% else %>
+  		<span class="skill-prof"><b>Unknown</b></span>
+  	<% end %>
+  </p>
+</li>

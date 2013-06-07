@@ -1,0 +1,13 @@
+<h1>Listing Pages</h1><hr />
+
+<a style="right: 50px; margin:5px; position:fixed" class = "btn btn-primary" onclick="$('#treeview').jstree('close_all');">Collapse All</a>
+<a style="right: 200px; margin:5px; position:fixed" class = "btn btn-primary" onclick="$('#treeview').jstree('open_all');">Expand All</a>
+
+<button style="right: 200px; top: 300px; margin:5px; position: fixed" class= "btn btn-primary" onclick=
+	"
+		var checked_id = $('#treeview').jstree('get_selected').attr('id');
+		location.href = 'http://localhost:3000/pages/new?parent_id=' + checked_id;
+	"
+>Create Page in Selected Directory</button>
+
+<div id="treeview" style="width:50%"></div>

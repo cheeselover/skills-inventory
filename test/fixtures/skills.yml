@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: skills
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  proficiency :integer
+#  description :text
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  proficiency: 1
+  description: MyText
+  user_id: 1
+
+two:
+  name: MyString
+  proficiency: 1
+  description: MyText
+  user_id: 1

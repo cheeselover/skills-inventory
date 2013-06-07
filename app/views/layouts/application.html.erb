@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Skills Inventory</title>
+		<meta name="description" content="Skills Inventory Application for Co-op at UW:CSCF">
+		<meta name="author" content="Siva Mahadevan">
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= javascript_include_tag "application", "jquery.jstree" %>
+		<%= csrf_meta_tags %>
+		<%= yield(:head) %>
+	</head>
+
+  <body>
+
+  	<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "Skills Inventory", root_path, id: "logo" %>
+
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Help",    '#' %></li>
+              <li><%= link_to "Sign in", '#' %></li>
+            </ul>
+          </nav>
+
+        </div>
+      </div>
+    </header>
+
+  	<div class="container">
+      <%= yield %>
+    </div>
+
+  </body>
+
+</html>

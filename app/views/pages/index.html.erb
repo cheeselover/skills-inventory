@@ -3,10 +3,15 @@
 <a style="right: 50px; margin:5px; position:fixed" class = "btn btn-primary" onclick="$('#treeview').jstree('close_all');">Collapse All</a>
 <a style="right: 200px; margin:5px; position:fixed" class = "btn btn-primary" onclick="$('#treeview').jstree('open_all');">Expand All</a>
 
-<button style="right: 200px; top: 300px; margin:5px; position: fixed" class= "btn btn-primary" onclick=
+<button style="right: 55px; top: 225px; margin:5px; position: fixed" class= "btn btn-primary" onclick=
 	"
 		var checked_id = $('#treeview').jstree('get_selected').attr('id');
-		location.href = '/pages/new?parent_id=' + checked_id;
+		
+		if(checked_id == null){
+			location.href = '#'
+		} else {
+			location.href = '/pages/new?parent_id=' + checked_id;
+		}
 	"
 >Create Page in Selected Directory</button>
 
